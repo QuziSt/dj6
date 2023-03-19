@@ -1,11 +1,11 @@
-name: јвтоматическое развертывание
+name: Автоматическое развертывание
 
 on:
     push:
         branch: [project]
 jobs:
     tests:
-        runs-on: ubunto 20.04
+        runs-on: ubuntu-20.04
     env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         DEBUG: '0'
