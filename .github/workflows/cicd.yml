@@ -31,7 +31,7 @@ jobs:
                 --health-timeout 5s
                 --health-retries 5
     steps:
-      - name: Проверка наличия изменений        
+      - name: Проверка наличия изменений
         uses: actions/checkout@v3
         
       - name: Установка python
