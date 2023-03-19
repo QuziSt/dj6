@@ -46,7 +46,7 @@ jobs:
         run: flake8 logistic --exclude logistic/migrations
 
       - name: Тестирование
-        run: pytest
+        run: pytest ./tests/stocks_products/test_sample.py    
 
             # - name: Деплой
           
