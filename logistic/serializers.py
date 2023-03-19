@@ -14,7 +14,7 @@ class ProductPositionSerializer(serializers.ModelSerializer):
     class Meta:
         model = StockProduct
         fields = ['product', 'quantity', 'price']
-    
+
 
 class StockSerializer(serializers.ModelSerializer):
     positions = ProductPositionSerializer(many=True)
@@ -31,7 +31,8 @@ class StockSerializer(serializers.ModelSerializer):
         stock = super().create(validated_data)
         for position in positions:
             StockProduct(stock_id=stock.id, product=position['product'],
-                         price=position['price'], quantity=position['quantity']).save()
+                         price=position['price'],
+                         quantity=position['quantity']).save()
         # здесь вам надо заполнить связанные таблицы
         # в нашем случае: таблицу StockProduct
         # с помощью списка positions
@@ -49,8 +50,8 @@ class StockSerializer(serializers.ModelSerializer):
                 stock=stock,
                 product=position.get('product'),
                 defaults={'price': position['price'],
-                        'quantity': position['quantity']
-                })
+                          'quantity': position['quantity']
+                          })
         return stock
         # здесь вам надо обновить связанные таблицы
         # в нашем случае: таблицу StockProduct
