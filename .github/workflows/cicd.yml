@@ -31,22 +31,22 @@ jobs:
                 --health-timeout 5s
                 --health-retries 5
     steps:
-        - name: проверка наличия изменений        
-          uses: actions/checkout@v3
-          
-        - name: Установка python
-          uses: actions/setup-python@v2
-          with:
-            python-version: 3.9
-            
-        - name: Установка зависимостей
-          run: pip install -r requierements.txt
+      - name: проверка наличия изменений        
+        uses: actions/checkout@v3
         
-        - name: Линтинг
-          run: flake8 logistic --exclude logistic/migrations
+      - name: Установка python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
           
-        - name: Тестирование
-          run: pytest
+      - name: Установка зависимостей
+        run: pip install -r requierements.txt
+      
+      - name: Линтинг
+        run: flake8 logistic --exclude logistic/migrations
+        
+      - name: Тестирование
+        run: pytest
 
         # - name: Деплой
           
