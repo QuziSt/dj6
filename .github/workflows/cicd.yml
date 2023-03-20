@@ -46,7 +46,22 @@ jobs:
         run: flake8 logistic --exclude logistic/migrations
 
       - name: Тестирование
-        run: pytest ./tests/stocks_products/test_sample.py    
+        run: pytest ./tests/stocks_products/test_sample.py 
+        env: 
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DEBUG: '0'
+          ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
+          DB_ENGINE: ${{ secrets.DB_ENGINE }}
+          DB_HOST: ${{ secrets.DB_ENGINE }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_PORT: ${{ secrets.DB_PORT }}
 
-            # - name: Деплой
-          
+      - name: Деплой
+        uses: appleboy/ssh-action@master
+        with: 
+          host: ${{ secrets.SERVER_HOST }}
+          usernme: ${{ secrets.SERVER_LOGIN }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          script: expect /home/quzi/gj6/pull.exp

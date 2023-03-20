@@ -1,5 +1,5 @@
-import pytest
 from rest_framework.test import APIClient
+
 
 def test_sample():
     client = APIClient()

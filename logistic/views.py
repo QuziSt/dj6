@@ -23,3 +23,7 @@ class StockViewSet(ModelViewSet):
 
 def sample_view(request):
     return HttpResponse('Test')
+
+
+def check_view(request):
+    return HttpResponse('Checked!')
