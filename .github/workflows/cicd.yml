@@ -64,4 +64,4 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_LOGIN }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          script: expect /home/quzi/gj6/pull.exp
+          run: expect /home/quzi/dj6/pull.exp
